@@ -23,5 +23,20 @@ if null_counts.sum() == 0:
 else:
     print("Warning: Missing values detected - imputation would be needed.\n")
 
+#Change Age from days -> Years, add BMI calculator
+
+#convert age from days to years rounding to one decimal
+df["age_years"] = np.round(df["age"]/ 365.25, 1)
+
+#get BMI from formula : BMI = weight(kg) / height(m)^2
+#Height in cm so we first convert to meters
+df["bmi"] = np.round(df["weight"]/ (df["height"]/100) **2,2)
+
+#drop the original "age" column, since we have age_years now
+df = df.drop(columns=["age"])
+
+print(f"Age range(years): {df['age_years'].min()} - {df['age_years'].max()}")
+print(f"BMI range: {df['bmi'].min()} - {df['bmi'].max()}\n")
+
 
 
