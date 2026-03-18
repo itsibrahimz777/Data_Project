@@ -67,3 +67,7 @@ print(f"  ap_lo range: {df['ap_lo'].min()} – {df['ap_lo'].max()}")
 print(f"  BMI range:   {df['bmi'].min()} – {df['bmi'].max()}")
 print(f"  Age range:   {df['age_years'].min()} – {df['age_years'].max()} years")
 
+#Save the cleaned data into cardio_clean.csv
+output_path = "cardio_clean.csv"
+df.to_csv(output_path, index=False)
+print(f"\nCleaned dataset saved to: {output_path}")
