@@ -6,6 +6,7 @@ from sklearn.metrics import classification_report, confusion_matrix, roc_auc_sco
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, InputLayer
+import matplotlib.pyplot as plt
 
 
 df = pd.read_csv("cardio_clean.csv")
@@ -34,7 +35,7 @@ model.compile(loss='binary_crossentropy', metrics=['accuracy'])
 
 model.summary()
 
-model.fit(X_train_scaled, Y_train, epochs=50, batch_size=32)
+history = model.fit(X_train_scaled, Y_train, epochs=50, batch_size=32)
 
 model_performance = model.evaluate(X_test_scaled, Y_test)
 print(f"Loss: {model_performance[0]:.4f}")
@@ -56,3 +57,24 @@ print(confusion_matrix(Y_test, Y_pred))
 
 roc_auc = roc_auc_score(Y_test, Y_pred_prob)
 print(f"\nROC-AUC: {roc_auc:.4f}")
+
+plt.figure(figsize=(12, 4))
+
+plt.subplot(1, 2, 1)
+plt.plot(history.history['loss'])
+plt.title('Loss Over Epochs')
+plt.xlabel('Epoch')
+plt.ylabel('Loss')
+
+plt.subplot(1, 2, 2)
+plt.plot(history.history['accuracy'])
+plt.title('Accuracy Over Epochs')
+plt.xlabel('Epoch')
+plt.ylabel('Accuracy')
+
+plt.tight_layout()
+plt.savefig('training_curves.png')
+plt.show()
+
+model.save('neural_network_model.h5')
+print("Model saved to neural_network_model.h5")
