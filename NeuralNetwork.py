@@ -15,3 +15,7 @@ Y = df["cardio"]
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.2, random_state = 42, stratify = Y)
 
 print(f"Train: {X_train.shape}, Test: {X_test.shape}")
+
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
