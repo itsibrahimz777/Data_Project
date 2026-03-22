@@ -1,0 +1,59 @@
+[33mcommit 117ec9e75614fc8d7544ff2055676f7464dd78c5[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: btrintm-beep <btrintm@gmail.com>
+Date:   Wed Mar 18 16:08:00 2026 -0600
+
+    Fix typo
+
+[33mcommit eca5178983654db2b2972dff5e99b29216a22f23[m
+Author: btrintm-beep <btrintm@gmail.com>
+Date:   Wed Mar 18 16:07:05 2026 -0600
+
+    Save data that was cleaned
+
+[33mcommit 55a509a301d78c3cbc8ac0c88ea0bd076b08720c[m
+Author: btrintm-beep <btrintm@gmail.com>
+Date:   Wed Mar 18 16:05:02 2026 -0600
+
+    Add sanity check for data
+
+[33mcommit 2022499dab9d789ec582954a7ea7b666e3e70ccf[m
+Author: btrintm-beep <btrintm@gmail.com>
+Date:   Wed Mar 18 16:01:57 2026 -0600
+
+    Remove physiologically implausible blood pressure values
+
+[33mcommit f2a01878b564e260dcb9660a00d29af2d767f9bf[m
+Author: btrintm-beep <btrintm@gmail.com>
+Date:   Wed Mar 18 15:59:35 2026 -0600
+
+    Add BMI calculator and change age from days to years
+
+[33mcommit 9713a40e0f23fa23925911320582a27eef84140c[m
+Author: btrintm-beep <btrintm@gmail.com>
+Date:   Wed Mar 18 15:53:28 2026 -0600
+
+    Add null check and drop id column
+
+[33mcommit e42f423292b96f1293468ad63b16fdca09423831[m
+Author: btrintm-beep <btrintm@gmail.com>
+Date:   Wed Mar 18 15:48:59 2026 -0600
+
+    Add initial data loading script in DataCleanerProgram.py
+
+[33mcommit d69f5f206018bbf94e8e7c3975788a4aec0a66cf[m
+Author: btrintm-beep <btrintm@gmail.com>
+Date:   Wed Mar 18 14:10:32 2026 -0600
+
+    Initial commit
+
+[33mcommit 85915ad8ce60f58541e54ddd3e67d7775c917a01[m
+Author: Butrint MOLLAPOLCI <butrint.mollapolci@ucalgary.ca>
+Date:   Wed Mar 18 12:23:52 2026 -0600
+
+    Add new file
+
+[33mcommit 8a059a6b6b1f0e84fec3163718420251a39734c4[m
+Author: Butrint MOLLAPOLCI <butrint.mollapolci@ucalgary.ca>
+Date:   Wed Mar 18 12:21:38 2026 -0600
+
+    Initial commit
