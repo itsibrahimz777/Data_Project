@@ -33,3 +33,5 @@ model.add(Dense(1, activation='sigmoid'))
 model.compile(loss='binary_crossentropy', metrics=['accuracy'])
 
 model.summary()
+
+model.fit(X_train_scaled, Y_train, epochs=50, batch_size=32)
