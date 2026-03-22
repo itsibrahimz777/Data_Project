@@ -6,6 +6,7 @@ from sklearn.metrics import classification_report, confusion_matrix, roc_auc_sco
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, InputLayer
+from tensorflow.keras.callbacks import EarlyStopping
 import matplotlib.pyplot as plt
 
 
@@ -34,8 +35,8 @@ model.add(Dense(1, activation='sigmoid'))
 model.compile(loss='binary_crossentropy', metrics=['accuracy'])
 
 model.summary()
-
-history = model.fit(X_train_scaled, Y_train, epochs=50, batch_size=32)
+early_stop = EarlyStopping(monitor='loss', patience=5, restore_best_weights=True)
+history = model.fit(X_train_scaled, Y_train, epochs=50, batch_size=32, callbacks=[early_stop])
 
 model_performance = model.evaluate(X_test_scaled, Y_test)
 print(f"Loss: {model_performance[0]:.4f}")
