@@ -3,6 +3,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
+from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import classification_report, confusion_matrix, roc_auc_score
 import joblib
 df = pd.read_csv("cardio_clean.csv")
@@ -16,11 +17,28 @@ scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
+param_grid = {
+    'C': [0.1, 1, 10],
+    'gamma': ['scale', 0.01, 0.1]
+}
+
+grid_search = GridSearchCV(
+    SVC(kernel='rbf', probability=True, random_state=42),
+    param_grid,
+    cv=5,
+    scoring='accuracy',
+    verbose=2
+)
+
+grid_search.fit(X_train_scaled, Y_train)
+
+print(f"Best parameters: {grid_search.best_params_}")
+print(f"Best CV accuracy: {grid_search.best_score_:.4f}")
+
+svm_model = grid_search.best_estimator_
+
 print(f"Train: {X_train.shape}, Test: {X_test.shape}")
 
-svm_model = SVC(kernel='rbf', probability=True, random_state=42)
-svm_model.fit(X_train_scaled, Y_train)
-print("SVM training complete")
 
 
 model_performance = svm_model.score(X_test_scaled, Y_test)
