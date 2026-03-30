@@ -63,3 +63,33 @@ label_predicted_lower = (predicted_label_probabilities > 0.4).astype(int)
 
 # Save the trained model
 joblib.dump(lr_model, "lr_model.pkl")
+
+print(f"Best parameters: {lr_best_value.best_params_}")
+print(f"Best CV accuracy: {lr_best_value.best_score_:.4f}")
+
+print(f"\nAccuracy: {accuracy:.4f}")
+
+print("\nClassification Report:")
+print(classification_report(labels_test, predicted_labels))
+
+print("\nConfusion Matrix:")
+print(lr_confusion_matrix)
+
+print(f"\nROC-AUC: {lr_roc_auc:.4f}")
+
+print("\nWith 0.4 threshold:")
+print(classification_report(labels_test, label_predicted_lower))
+print(confusion_matrix(labels_test, label_predicted_lower))
+
+# Feature importance via model coefficients
+# Logistic Regression gives us a coefficient per feature — shows linear influence
+feature_names = features.columns.tolist()
+coefficients = lr_model.coef_[0]
+importance_df = pd.DataFrame({
+    "Feature": feature_names,
+    "Coefficient": coefficients,
+    "Abs_Coefficient": np.abs(coefficients)
+}).sort_values("Abs_Coefficient", ascending=False)
+
+print("\nFeature Importances (by absolute coefficient):")
+print(importance_df.to_string(index=False))
