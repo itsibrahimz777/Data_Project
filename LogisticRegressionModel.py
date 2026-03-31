@@ -22,9 +22,9 @@ features_train_scaled = lr_scaler.fit_transform(features_train)
 features_test_scaled = lr_scaler.transform(features_test)
 
 # Hyperparameter tuning via cross-validation on training data only (no leakage)
-# C: inverse regularisation strength — smaller = stronger regularisation
-# Using lbfgs solver with L2 penalty — the recommended combination in sklearn 1.8+
-# L2 (ridge-style) penalises large coefficients and is well-suited to this dataset
+# C: inverse regularisation strength --> smaller = stronger regularization
+# Using lbfgs solver with L2 penalty
+# L2 (ridge-style) penalizes large coefficients and is well-suited to this dataset
 parameter_grid = {
     "C": [0.01, 0.1, 1, 10],
     "penalty": ["l2"],
